@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard - Suporte Técnico</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <header class="header">
+
+            <h1>Sistema de Suporte Técnico</h1>
+
+            <div>
+                <span id="nomeUsuario"></span>
+
+                <button
+                    class="btn-sair"
+                    id="btnSair"
+                >
+                    Sair
+                </button>
+            </div>
+
+        </header>
+
+
+        <main class="container">
+
+            <!-- INDICADORES -->
+
+            <section class="cards">
+
+                <div class="card">
+                    <h3>Chamados Abertos</h3>
+                    <div
+                        class="numero"
+                        id="totalAbertos"
+                    >
+                        0
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Em Andamento</h3>
+                    <div
+                        class="numero"
+                        id="totalAndamento"
+                    >
+                        0
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Concluídos</h3>
+                    <div
+                        class="numero"
+                        id="totalConcluidos"
+                    >
+                        0
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Total de Chamados</h3>
+                    <div
+                        class="numero"
+                        id="totalChamados"
+                    >
+                        0
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- CADASTRO -->
+
+            <section class="section">
+
+                <h2>Cadastrar Chamado</h2>
+
+                <form id="chamadoForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="titulo">
+                                Título
+                            </label>
+
+                            <input
+                                type="text"
+                                id="titulo"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="categoria">
+                                Categoria
+                            </label>
+
+                            <input
+                                type="text"
+                                id="categoria"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="prioridade">
+                                Prioridade
+                            </label>
+
+                            <select
+                                id="prioridade"
+                                required
+                            >
+
+                                <option value="">
+                                    Selecione
+                                </option>
+
+                                <option value="baixa">
+                                    Baixa
+                                </option>
+
+                                <option value="média">
+                                    Média
+                                </option>
+
+                                <option value="alta">
+                                    Alta
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="usuario_id">
+                                Usuário responsável
+                            </label>
+
+                            <select
+                                id="usuario_id"
+                                required
+                            >
+
+                                <option value="">
+                                    Carregando usuários...
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group form-full">
+
+                            <label for="descricao">
+                                Descrição
+                            </label>
+
+                            <textarea
+                                id="descricao"
+                                required
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-cadastrar"
+                    >
+                        Cadastrar Chamado
+                    </button>
+
+                </form>
+
+                <div
+                    id="mensagemCadastro"
+                    class="mensagem"
+                ></div>
+
+            </section>
+
+
+            <!-- LISTAGEM -->
+
+            <section class="section">
+
+                <h2>Chamados</h2>
+
+
+                <!-- FILTROS -->
+
+                <div class="filtros">
+
+                    <select id="filtroStatus">
+
+                        <option value="">
+                            Todos os status
+                        </option>
+
+                        <option value="aberto">
+                            Aberto
+                        </option>
+
+                        <option value="em andamento">
+                            Em andamento
+                        </option>
+
+                        <option value="concluído">
+                            Concluído
+                        </option>
+
+                    </select>
+
+
+                    <select id="filtroPrioridade">
+
+                        <option value="">
+                            Todas as prioridades
+                        </option>
+
+                        <option value="baixa">
+                            Baixa
+                        </option>
+
+                        <option value="média">
+                            Média
+                        </option>
+
+                        <option value="alta">
+                            Alta
+                        </option>
+
+                    </select>
+
+
+                    <button
+                        class="btn btn-editar"
+                        id="btnLimparFiltros"
+                    >
+                        Limpar filtros
+                    </button>
+
+                </div>
+
+
+                <!-- TABELA -->
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Título</th>
+                                <th>Categoria</th>
+                                <th>Prioridade</th>
+                                <th>Status</th>
+                                <th>Responsável</th>
+                                <th>Data</th>
+                                <th>Ações</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="tabelaChamados">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="../js/dashboard.js"></script>
+
+</body>
+
+</html>
